@@ -1,21 +1,5 @@
 const https = require('https');
-const fortniteURL =  'https://fortnite-api.com/v2/shop/br?language=es-419';
-
-async function getData(){
-    https.get(fortniteURL, res => {
-        let data = [];
-
-        res.on('data', chunk => {
-            data.push(chunk);
-        });
-
-        res.on('end', () => {
-            let objetcts = JSON.parse(Buffer.concat(data).toString());
-            let cleanObjects = cleanData(objetcts);
-            console.log(cleanObjects);
-        });
-    });
-}
+const fortniteURL = 'https://fortnite-api.com/v2/shop/br?language=es-419';
 
 function cleanData(data){
     let objects = [];
@@ -55,4 +39,21 @@ function cleanSections(input, output){
     }
 }
 
-getData();
+module.exports= {
+    execute(){
+        https.get(fortniteURL, res => {
+            let data = [];
+    
+            res.on('data', chunk => {
+                data.push(chunk);
+            });
+
+            res.on('end', () => {
+                let objetcts = JSON.parse(Buffer.concat(data).toString());
+                let cleanObjects = cleanData(objetcts);
+                console.log(cleanObjects);
+                return cleanObjects;
+            });
+        });
+    }
+}
