@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/thepresidentm/fb-fortnite-bot/issues"
   },
-  "homepage": "https://github.com/thepresidentm/fb-fortnite-bot#readme"
+  "homepage": "https://github.com/thepresidentm/fb-fortnite-bot#readme",
+  "dependencies": {
+    "urllib": "^2.38.0"
+  }
 }
