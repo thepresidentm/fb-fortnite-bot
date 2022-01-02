@@ -6,7 +6,7 @@ const facebookURL = 'https://graph.facebook.com/v12.0/';
 
 function post(array) {
     let date = new Date();
-    let today = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    let today = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' ' + date.getMinutes();
     let output = '[';
     array.forEach(element => {
         output += ',{"media_fbid":"' + element + '"}';
@@ -14,7 +14,7 @@ function post(array) {
     output = output.replace(',', '');
     //console.log(encodeURIComponent(output + ']'));
     let attachedMedia = encodeURIComponent(output + ']');
-    urllib.request(facebookURL + keys.page + '/feed?message=' + today + '&attached_media=' + attachedMedia + '&access_token=' + keys.token, { method: 'POST' }).then(()=>{
+    urllib.request(facebookURL + keys.page + '/feed?message=' + today + '&attached_media=' + attachedMedia + '&access_token=' + keys.token, { method: 'POST', timeout: 10000 }).then(()=>{
         console.log('Publicacion realizada');
     });
 }
