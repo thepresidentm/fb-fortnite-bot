@@ -43,6 +43,7 @@ function cleanSections(input, output){
 module.exports= {
     execute(){
         // Falta checar que sucede si no hay imagen
+        // Native httpszzzzz < urllibgod
         https.get(fortniteURL, res => {
             let data = [];
     
