@@ -52,7 +52,6 @@ module.exports= {
                 let objetcts = JSON.parse(Buffer.concat(data).toString());
                 let cleanObjects = cleanData(objetcts);
                 console.log(cleanObjects);
-                return cleanObjects;
             });
         });
     }
