@@ -1,4 +1,6 @@
 const token = '';
+const page = '';
 module.exports = {
-    token
+    token,
+    page
 }
