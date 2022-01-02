@@ -5,13 +5,18 @@ const facebookURL = 'https://graph.facebook.com/v12.0/';
 
 
 function post(array) {
+    let date = new Date();
+    let today = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     let output = '[';
     array.forEach(element => {
         output += ',{"media_fbid":"' + element + '"}';
     });
     output = output.replace(',', '');
     //console.log(encodeURIComponent(output + ']'));
-    console.log(output + ']');
+    let attachedMedia = encodeURIComponent(output + ']');
+    urllib.request(facebookURL + keys.page + '/feed?message=' + today + '&attached_media=' + attachedMedia + '&access_token=' + keys.token, { method: 'POST' }).then(()=>{
+        console.log('Publicacion realizada');
+    });
 }
 
 
