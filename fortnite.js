@@ -1,4 +1,3 @@
-const { Console } = require('console');
 const https = require('https');
 const fortniteURL =  'https://fortnite-api.com/v2/shop/br?language=es-419';
 
