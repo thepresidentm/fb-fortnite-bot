@@ -1,4 +1,5 @@
 const https = require('https');
+const facebook = require('./facebook');
 const fortniteURL = 'https://fortnite-api.com/v2/shop/br?language=es-419';
 
 function cleanData(data){
@@ -41,6 +42,7 @@ function cleanSections(input, output){
 
 module.exports= {
     execute(){
+        // Falta checar que sucede si no hay imagen
         https.get(fortniteURL, res => {
             let data = [];
     
@@ -51,7 +53,8 @@ module.exports= {
             res.on('end', () => {
                 let objetcts = JSON.parse(Buffer.concat(data).toString());
                 let cleanObjects = cleanData(objetcts);
-                console.log(cleanObjects);
+                // console.log(cleanObjects);
+                facebook.execute(cleanObjects);
             });
         });
     }
