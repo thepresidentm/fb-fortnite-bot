@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/thepresidentm/fb-fortnite-bot#readme",
   "dependencies": {
+    "node-cron": "^3.0.0",
     "urllib": "^2.38.0"
   }
 }
