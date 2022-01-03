@@ -29,7 +29,7 @@ module.exports = {
         let completed = 0;
         for(var i = 0; i < length; i ++){
             if (array[i].name != undefined) {
-                urllib.request(facebookURL + keys.page + '/photos?url=' + array[i].image + '&caption=' + encodeURIComponent(array[i].name) + '&published=false&access_token=' + keys.token, { method: 'POST' }).then(function (result) {
+                urllib.request(facebookURL + keys.page + '/photos?url=' + array[i].image + '&caption=' + encodeURIComponent(array[i].name) + '&published=false&access_token=' + keys.token, { method: 'POST', timeout: 10000 }).then(function (result) {
                     data.push(JSON.parse(result.data).id);
                     completed++;
                     if(completed == length - 1){
